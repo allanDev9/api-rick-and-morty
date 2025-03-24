@@ -1,11 +1,11 @@
-
+import Characters from './components/pages/Characters';
 
 function App() {
 
   return (
     <>
-      <div>
-        <h1>Hola Allan</h1>
+      <div className='flex justify-center flex-row bg-black p-10 text-center'>
+        <Characters />
       </div>
     </>
   )
