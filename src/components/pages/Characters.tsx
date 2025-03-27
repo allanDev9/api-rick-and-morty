@@ -5,6 +5,8 @@ import type { CharacterProps } from "./interface/PropsTypes/CharacterProps"
 
 const Characters = ({ title, setTitle }: CharacterProps) => {
   const [character, setCharacter] = useState<CharactersType[]>([])
+  const [searchcharacter, setSearchCharacter] = useState<string>('')
+  const [filterCharacter, setFilterCharacter] = useState<CharactersType[]>(character)
 
   useEffect(() => {
     const fetchingCharacters = async () => {
@@ -12,25 +14,37 @@ const Characters = ({ title, setTitle }: CharacterProps) => {
         const response = await fetch('https://rickandmortyapi.com/api/character')
         const data = await response.json()
         setCharacter(data.results)
+        setFilterCharacter(data.results)
 
       } catch (error) {
         console.error('Error con el fetchingCharacters', error)
       }
     }
     fetchingCharacters();
-  })
+  }, [])
 
   const handleTitleChange = (newTitle: string) => {
     setTitle(newTitle)
     localStorage.setItem('title', newTitle)
   }
 
+  const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const searchCharacter = event.target.value.toLowerCase();
+    setSearchCharacter(searchCharacter)
+
+    const filteredCharacters = character.filter(character => {
+      return character.name.toLowerCase().includes(searchCharacter)
+    })
+    setFilterCharacter(filteredCharacters)
+  }
+
   return (
     <div>
       <h1 className="text-3xl font-extrabold text-red-700">{title}</h1>
       <div className="text-3xl font-extrabold text-yellow-300">Api Rick And Morty</div>
+      <input className="bg-white" type="text" placeholder="Buscar personaje..." value={searchcharacter} onChange={handleSearchChange} />
       <article className="grid grid-cols-3 gap-10 mt-10">
-        {character.map((character: CharactersType) => (
+        {filterCharacter.map((character: CharactersType) => (
           <section className="text-white text-start rounded-3xl border border-blue-700 p-5 hover:scale-110 hover:border-white transition duration-1000 ease-in-out" key={character.id} onClick={() => handleTitleChange(character.name)}>
             <img className='rounded-3xl hover:sepia-50 transition duration-1000 ease-in-out' src={character.image} alt={character.name}></img>
             <div className="flex flex-col">
