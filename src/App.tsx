@@ -7,7 +7,7 @@ import NightlightRoundIcon from '@mui/icons-material/NightlightRound';
 function App() {
   const [theme, setTheme] = useState<boolean>(() => {
     const saveTheme = localStorage.getItem('theme')
-    return saveTheme === 'light' || saveTheme === null;
+    return saveTheme === 'light' || saveTheme === 'dark';
   })
 
   useEffect(() => {
@@ -37,7 +37,7 @@ function App() {
     <>
       <div className={`flex justify-center flex-row bg-black p-10 text-center ${theme ? 'ligth-theme' : 'dark-theme'}`}>
         <div className='flex items-start'>
-          <button className={`bg-white text-black h-[50px] w-[55px] rounded-4xl p ${theme ? 'bg-black text-black border border-black ' : 'white text-black'}`} onClick={handletoggleMode}>
+          <button className={`text-black h-[50px] w-[55px] rounded-4xl p ${theme ? 'bg-black text-white border border-black ' : 'bg-white text-black'}`} onClick={handletoggleMode}>
             {theme ? <WbSunnyIcon /> : <NightlightRoundIcon />}
           </button>
         </div>

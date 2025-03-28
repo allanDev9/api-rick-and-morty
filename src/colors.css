@@ -1,9 +1,9 @@
 .ligth-theme {
-    background-color: white !important;
+    background-color: rgba(184, 184, 184, 0.501) !important;
     transition: 1s ease;
 }
 
 .dark-theme {
-    background-color: black !important;
+    background-color: rgba(0, 0, 0, 0.666) !important;
     transition: 1s ease;
 }
