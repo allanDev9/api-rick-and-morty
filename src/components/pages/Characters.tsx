@@ -35,7 +35,7 @@ const Characters = ({ theme }: CharacterProps) => {
 
   return (
     <div>
-      <div className="text-3xl font-extrabold text-yellow-300">Api Rick And Morty</div>
+      <div className={`text-4xl font-extrabold ${theme ? 'text-blue-900' : 'text-yellow-300'}`}>Api Rick And Morty</div>
       <input className={`border border-gray-400 mt-10 mr-210 p-2 w-[250px] rounded-4xl text-white ${theme ? 'border-black bg-gray-600 text-black' : 'border-white text-black'}`} type="text" placeholder="Buscar personaje..." value={searchcharacter} onChange={handleSearchChange} />
       <article className="grid grid-cols-3 gap-10 mt-10">
         {filterCharacter.map((character: CharactersType) => (
