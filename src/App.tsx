@@ -5,15 +5,10 @@ import WbSunnyIcon from '@mui/icons-material/WbSunny';
 import NightlightRoundIcon from '@mui/icons-material/NightlightRound';
 
 function App() {
-  const [title, setTitle] = useState<string>(localStorage.getItem('title') || 'Pedro')
   const [theme, setTheme] = useState<boolean>(() => {
     const saveTheme = localStorage.getItem('theme')
     return saveTheme === 'light' || saveTheme === null;
   })
-
-  useEffect(() => {
-    localStorage.setItem('title', title)
-  }, [title])
 
   useEffect(() => {
     const saveTheme = localStorage.getItem('theme')
@@ -46,7 +41,7 @@ function App() {
             {theme ? <WbSunnyIcon /> : <NightlightRoundIcon />}
           </button>
         </div>
-        <Characters title={title} setTitle={setTitle} theme={theme} />
+        <Characters theme={theme} />
       </div>
     </>
   )

@@ -3,7 +3,7 @@ import type { Characters as CharactersType } from "./interface/Types"
 import type { CharacterProps } from "./interface/Props"
 
 
-const Characters = ({ title, setTitle, theme }: CharacterProps) => {
+const Characters = ({ theme }: CharacterProps) => {
   const [character, setCharacter] = useState<CharactersType[]>([])
   const [searchcharacter, setSearchCharacter] = useState<string>('')
   const [filterCharacter, setFilterCharacter] = useState<CharactersType[]>(character)
@@ -23,11 +23,6 @@ const Characters = ({ title, setTitle, theme }: CharacterProps) => {
     fetchingCharacters();
   }, [])
 
-  const handleTitleChange = (newTitle: string) => {
-    setTitle(newTitle)
-    localStorage.setItem('title', newTitle)
-  }
-
   const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const searchCharacter = event.target.value.toLowerCase();
     setSearchCharacter(searchCharacter)
@@ -40,13 +35,12 @@ const Characters = ({ title, setTitle, theme }: CharacterProps) => {
 
   return (
     <div>
-      <h1 className="text-3xl font-extrabold text-red-700">{title}</h1>
       <div className="text-3xl font-extrabold text-yellow-300">Api Rick And Morty</div>
       <input className={`border border-gray-400 mt-10 mr-210 p-2 w-[250px] rounded-4xl text-white ${theme ? 'border-black bg-gray-600 text-black' : 'border-white text-black'}`} type="text" placeholder="Buscar personaje..." value={searchcharacter} onChange={handleSearchChange} />
       <article className="grid grid-cols-3 gap-10 mt-10">
         {filterCharacter.map((character: CharactersType) => (
-          <section className={`text-start rounded-3xl border border-blue-700 p-5 hover:scale-110 hover:border-white transition duration-1000 ease-in-out ${theme ? 'text-black border-gray-700 bg-gray-400' : 'text-white'}`} key={character.id} onClick={() => handleTitleChange(character.name)}>
-            <img className='rounded-3xl hover:sepia-50 transition duration-1000 ease-in-out' src={character.image} alt={character.name}></img>
+          <section className={`text-start rounded-3xl border border-blue-700 p-5 hover:scale-110 hover:border-white transition duration-300 ${theme ? 'text-black border-gray-700 bg-gray-400' : 'text-white'}`} key={character.id}>
+            <img className='rounded-3xl hover:sepia-50 transition duration-300 ease-in-out' src={character.image} alt={character.name}></img>
             <div className="flex flex-col">
               <h2>{character.name}</h2>
               <span>{character.status}</span>
