@@ -38,7 +38,7 @@ function App() {
       <div className={`flex justify-center flex-row bg-black p-10 text-center ${theme ? 'ligth-theme' : 'dark-theme'}`}>
         <div className='flex items-start'>
           <button className={`text-black h-[50px] w-[55px] rounded-4xl p ${theme ? 'bg-black text-white border border-black ' : 'bg-white text-black'}`} onClick={handletoggleMode}>
-            {theme ? <WbSunnyIcon /> : <NightlightRoundIcon />}
+            {theme ? <NightlightRoundIcon /> : <WbSunnyIcon />}
           </button>
         </div>
         <Characters theme={theme} />
