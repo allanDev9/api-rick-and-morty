@@ -34,10 +34,10 @@ const Characters = ({ theme }: CharacterProps) => {
   }
 
   return (
-    <div>
+    <div className="max-sm:grid max-sm:grid-cols-1 max-sm:mx-auto">
       <div className={`text-4xl font-extrabold ${theme ? 'text-blue-900' : 'text-yellow-300'}`}>Api Rick And Morty</div>
       <input className={`border mt-20 mr-200 p-2 w-[280px] rounded-4xl ${theme ? 'border-black text-black' : 'border-gray-400 text-white'}`} type="text" placeholder="Buscar personaje..." value={searchcharacter} onChange={handleSearchChange} />
-      <article className="grid grid-cols-3 gap-10 mt-10">
+      <article className="grid grid-cols-3 gap-10 mt-10 max-sm:grid-cols-1">
         {filterCharacter.map((character: CharactersType) => (
           <section className={`text-start scale-95 font-bold rounded-3xl border border-blue-700 p-5 hover:scale-100 hover:border-white transition duration-300 ${theme ? 'text-black border-gray-700 bg-gray-400' : 'text-black bg-gray-300'}`} key={character.id}>
             <img className='rounded-3xl hover:sepia-50 transition duration-300 ease-in-out' src={character.image} alt={character.name}></img>
