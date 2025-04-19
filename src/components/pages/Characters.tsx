@@ -45,7 +45,7 @@ const Characters = ({ theme }: CharacterProps) => {
         value={searchcharacter}
         onChange={handleSearchChange}
       />
-      <section className="flex flex-col h-[80vh] gap-10 mt-10 max-sm:flex-col max-sm:h-[80vh] bg-blue-800 max-sm:m-h-[10vh] max-sm:w-[100%] border-2 border-black rounded-xl max-w-[1000px] overflow-y-auto p-10 max-sm:px-5 max-sm:py-5">
+      <section className="flex flex-col h-[80vh] gap-10 mt-10 max-sm:flex-col max-sm:h-[80vh] bg-blue-800 max-sm:m-h-[10vh] max-sm:w-[100%] border-2 border-black rounded-xl max-w-[1000px] overflow-x-hidden overflow-y-auto p-10 max-sm:px-5 max-sm:py-5">
         {filterCharacter.length > 0 ? (
           filterCharacter.map((character: CharactersType) => (
             <li key={character.id} className="max-sm:ml-4 list-none bg-blue-400 max-sm:w-[200px] w-[300px] h-[400px] flex flex-col items-center rounded-md">
@@ -63,7 +63,7 @@ const Characters = ({ theme }: CharacterProps) => {
             </li>
           ))
         ) : (
-          <p className="text-2xl text-red-600 font-mono h-full col-span-3 relative top-40">No se encontraron caracteres</p>
+          <p className="text-2xl text-white font-mono font-bold relative top-40">No se encontraron caracteres</p>
         )}
       </section>
     </div>
